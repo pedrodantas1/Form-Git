@@ -1,14 +1,21 @@
-const userName = "Jujuba louco";
+const userName = "Ben 10";
 
 document.getElementById('chat').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     let messageDiv = document.getElementById('message');
 
-    document.getElementById('messages').insertAdjacentHTML('beforeend', sendMessage(messageDiv.value));
+    let messageBox = document.getElementById('messages');
+    messageBox.insertAdjacentHTML('beforeend', sendMessage(userName, messageDiv.value));
+
+    if (messageDiv.value == '!pills') {
+        let response = 'eae mano nao ta a fim de uma balinha n?';
+        messageBox.insertAdjacentHTML('beforeend', sendMessage('Jujuba Louco', response));
+    }
+
     messageDiv.value = '';
 });
 
-function sendMessage(message) {
-    return `<div>${userName}: ${message}</div>`
+function sendMessage(username, message) {
+    return `<div>${username}: ${message}</div>`
 }
